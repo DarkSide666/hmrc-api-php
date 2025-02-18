@@ -1,10 +1,14 @@
 {
-    "name": "s-patompong/hmrc-api-php",
+    "name": "darkside666/hmrc-api-php",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Patompong Savaengsuk",
             "email": "p.pangpond@windowslive.com"
+        },
+        {
+            "name": "Imants Horsts"
         }
     ],
     "minimum-stability": "stable",
@@ -28,6 +32,5 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit"
-    },
-    "license": "MIT"
+    }
 }
