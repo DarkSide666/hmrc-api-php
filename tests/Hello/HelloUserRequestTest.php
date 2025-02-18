@@ -12,13 +12,12 @@ use HMRC\Exceptions\MissingAccessTokenException;
 use HMRC\Hello\HelloUserRequest;
 use HMRC\Oauth2\AccessToken as HMRCAccessToken;
 use HMRC\Request\RequestMethod;
-use HMRC\Test\Request\RequestTest;
+use HMRC\Test\Request\RequestTestCase;
 use League\OAuth2\Client\Token\AccessToken;
 
-class HelloUserRequestTest extends RequestTest
+class HelloUserRequestTest extends RequestTestCase
 {
-    /** @test */
-    public function it_throws_exception_when_has_no_access_token()
+    public function testItThrowsExceptionWhenHasNoAccessToken()
     {
         $this->expectException(MissingAccessTokenException::class);
 
@@ -26,8 +25,7 @@ class HelloUserRequestTest extends RequestTest
         $request->fire();
     }
 
-    /** @test */
-    public function it_calls_correct_endpoint()
+    public function testItCallsCorrectEndpoint()
     {
         // Setup access token
         $accessToken = uniqid();

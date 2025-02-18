@@ -12,12 +12,12 @@ if (!isset($_GET['client_id']) || !isset($_GET['client_secret'])) {
 
 session_start();
 
-$callbackUri = 'http://localhost:8080/examples/oauth2/callback.php';
+$callbackUri = url('/oauth2/callback.php');
 
 $_SESSION['client_id'] = $_GET['client_id'];
 $_SESSION['client_secret'] = $_GET['client_secret'];
 $_SESSION['callback_uri'] = $callbackUri;
-$_SESSION['caller'] = '/examples/index.php';
+$_SESSION['caller'] = url('/index.php');
 
 $provider = new Provider(
     $_GET['client_id'],

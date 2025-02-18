@@ -64,7 +64,7 @@ $accessToken = AccessToken::get();
     <div id="access-token-container"></div>
     <a href="javascript:void(0)" onclick="authorize()"
        class="btn btn-sm btn-warning" style="margin-top: 10px" id="create-access-token-btn">Create access token</a>
-    <a href="/examples/oauth2/destroy-session.php" class="btn btn-sm btn-danger" style="margin-top: 10px"
+    <a href="<?php echo url('/oauth2/destroy-session.php'); ?>" class="btn btn-sm btn-danger" style="margin-top: 10px"
        id="destroy-session-btn">Destroy session</a>
 </div>
 <hr>
@@ -77,7 +77,7 @@ $accessToken = AccessToken::get();
                 <tr>
                     <td>Hello world</td>
                     <td class="test-btn">
-                        <a href='/examples/hello/hello-world.php'>
+                        <a href='<?php echo url('/hello/hello-world.php'); ?>'>
                             <button class="btn btn-sm btn-primary">Test</button>
                         </a>
                     </td>
@@ -95,7 +95,7 @@ $accessToken = AccessToken::get();
                         Hello world user
                     </td>
                     <td class="test-btn">
-                        <a href='/examples/hello/hello-world-user.php'>
+                        <a href='<?php echo url('/hello/hello-world-user.php'); ?>'>
                             <button class="btn btn-sm btn-primary">Test</button>
                         </a>
                     </td>
@@ -247,7 +247,7 @@ $accessToken = AccessToken::get();
         let destroySessionBtn = $("#destroy-session-btn");
 
         if (accessToken === "") { // Doesn't have access token
-            accessTokenContainer.text("Access Token: Doesn't exists.");
+            accessTokenContainer.text("Access Token: Doesn't exist.");
             destroySessionBtn.hide();
             features.hide();
         } else {
@@ -265,9 +265,9 @@ $accessToken = AccessToken::get();
         if (clientSecret !== "") query.push(`client_secret=${clientSecret}`);
         const queryString = query.join('&');
         if (query.length) {
-            location.href = '/examples/oauth2/create-access-token.php' + '?' + queryString;
+            location.href = '<?php echo url('/oauth2/create-access-token.php'); ?>' + '?' + queryString;
         } else {
-            location.href = '/examples/oauth2/create-access-token.php';
+            location.href = '<?php echo url('/oauth2/create-access-token.php'); ?>';
         }
     }
 
@@ -278,9 +278,9 @@ $accessToken = AccessToken::get();
         if (serverToken !== "") query.push(`server_token=${serverToken}`);
         const queryString = query.join('&');
         if (query.length) {
-            location.href = '/examples/hello/hello-world-application.php' + '?' + queryString;
+            location.href = '<?php echo url('/hello/hello-world-application.php'); ?>' + '?' + queryString;
         } else {
-            location.href = '/examples/hello/hello-world-application.php';
+            location.href = '<?php echo url('/hello/hello-world-application.php'); ?>';
         }
     }
 
@@ -300,9 +300,9 @@ $accessToken = AccessToken::get();
         if (govTestScenario !== "") query.push(`gov_test_scenario=${govTestScenario}`);
         const queryString = query.join('&');
         if (query.length) {
-            location.href = "/examples/vat/get-vat-obligations.php" + '?' + queryString;
+            location.href = "<?php echo url('/vat/get-vat-obligations.php'); ?>" + '?' + queryString;
         } else {
-            location.href = "/examples/vat/get-vat-obligations.php";
+            location.href = "<?php echo url('/vat/get-vat-obligations.php'); ?>";
         }
     }
 
@@ -337,9 +337,9 @@ $accessToken = AccessToken::get();
         if (govTestScenario !== "") query.push(`gov_test_scenario=${govTestScenario}`);
         const queryString = query.join('&');
         if (query.length) {
-            location.href = "/examples/vat/submit-vat-return.php" + '?' + queryString;
+            location.href = "<?php echo url('/vat/submit-vat-return.php'); ?>" + '?' + queryString;
         } else {
-            location.href = "/examples/vat/submit-vat-return.php";
+            location.href = "<?php echo url('/vat/submit-vat-return.php'); ?>";
         }
     }
 
@@ -354,9 +354,9 @@ $accessToken = AccessToken::get();
         if (govTestScenario !== "") query.push(`gov_test_scenario=${govTestScenario}`);
         const queryString = query.join('&');
         if (query.length) {
-            location.href = "/examples/vat/view-vat-return.php" + '?' + queryString;
+            location.href = "<?php echo url('/vat/view-vat-return.php'); ?>" + '?' + queryString;
         } else {
-            location.href = "/examples/vat/view-vat-return.php";
+            location.href = "<?php echo url('/vat/view-vat-return.php'); ?>";
         }
     }
 </script>

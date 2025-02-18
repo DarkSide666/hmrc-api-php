@@ -13,8 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class RequestPublicMethodTest extends TestCase
 {
-    /** @test */
-    public function it_has_correct_accept_header_when_ser_version_and_content_type()
+    public function testItHasCorrectAcceptHeaderWhenSerVersionAndContentType()
     {
         // Setup mocked client
         $container = [];

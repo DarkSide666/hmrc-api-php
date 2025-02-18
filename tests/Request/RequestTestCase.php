@@ -12,13 +12,22 @@ use HMRC\Request\RequestHeader;
 use HMRC\ServerToken\ServerToken;
 use PHPUnit\Framework\TestCase;
 
-abstract class RequestTest extends TestCase
+abstract class RequestTestCase extends TestCase
 {
     /** @var array */
     protected $container = [];
 
     /** @var Client */
     protected $mockedClient;
+
+    public function __construct()
+    {
+        parent::__construct('hmrc');
+    }
+    public function hmrc()
+    {
+        // do nothing
+    }
 
     /**
      * Get client with mocked response

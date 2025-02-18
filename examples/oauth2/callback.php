@@ -20,5 +20,5 @@ $accessToken = $provider->getAccessToken('authorization_code', [
 
 \HMRC\Oauth2\AccessToken::set($accessToken);
 
-header('Location: /examples/index.php');
+header('Location: ' . url('/index.php'));
 exit;

@@ -11,12 +11,12 @@ use GuzzleHttp\Psr7\Response;
 use HMRC\Exceptions\InvalidVariableValueException;
 use HMRC\Oauth2\AccessToken as HMRCAccessToken;
 use HMRC\Request\RequestMethod;
-use HMRC\Test\Request\RequestTest;
+use HMRC\Test\Request\RequestTestCase;
 use HMRC\VAT\RetrieveVATLiabilitiesGovTestScenario;
 use HMRC\VAT\RetrieveVATLiabilitiesRequest;
 use League\OAuth2\Client\Token\AccessToken;
 
-class RetrieveVATLiabilitiesRequestTest extends RequestTest
+class RetrieveVATLiabilitiesRequestTest extends RequestTestCase
 {
     private $vrn;
 
@@ -33,8 +33,7 @@ class RetrieveVATLiabilitiesRequestTest extends RequestTest
         $this->to = '2019-01-01';
     }
 
-    /** @test */
-    public function it_throws_exception_when_given_wrong_government_test_scenario()
+    public function testItThrowsExceptionWhenGivenWrongGovernmentTestScenario()
     {
         $this->expectException(InvalidVariableValueException::class);
 
@@ -42,8 +41,7 @@ class RetrieveVATLiabilitiesRequestTest extends RequestTest
         $request->setGovTestScenario('WRONG');
     }
 
-    /** @test */
-    public function it_doesnt_throws_exception_when_given_correct_government_test_scenario()
+    public function testItDoesntThrowExceptionWhenGivenCorrectGovernmentTestScenario()
     {
         $request = new RetrieveVATLiabilitiesRequest($this->vrn, $this->from, $this->to);
         $request->setGovTestScenario(RetrieveVATLiabilitiesGovTestScenario::SINGLE_LIABILITY);
@@ -51,8 +49,7 @@ class RetrieveVATLiabilitiesRequestTest extends RequestTest
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_calls_correct_endpoint()
+    public function testItCallsCorrectEndpoint()
     {
         // Setup access token
         $accessToken = uniqid();

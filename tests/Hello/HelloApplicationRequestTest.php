@@ -11,12 +11,11 @@ use GuzzleHttp\Psr7\Response;
 use HMRC\Exceptions\EmptyServerTokenException;
 use HMRC\Hello\HelloApplicationRequest;
 use HMRC\Request\RequestMethod;
-use HMRC\Test\Request\RequestTest;
+use HMRC\Test\Request\RequestTestCase;
 
-class HelloApplicationRequestTest extends RequestTest
+class HelloApplicationRequestTest extends RequestTestCase
 {
-    /** @test */
-    public function it_throws_exception_when_server_token_is_empty()
+    public function testItThrowsExceptionWhenServerTokenIsEmpty()
     {
         $this->expectException(EmptyServerTokenException::class);
 
@@ -24,8 +23,7 @@ class HelloApplicationRequestTest extends RequestTest
         $request->fire();
     }
 
-    /** @test */
-    public function it_calls_correct_endpoint()
+    public function testItCallsCorrectEndpoint()
     {
         // Setup server token
         $serverToken = uniqid();

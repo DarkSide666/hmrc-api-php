@@ -7,8 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ServerTokenTest extends TestCase
 {
-    /** @test */
-    public function it_can_set_server_token()
+    public function testItCanSetServerToken()
     {
         $serverToken = uniqid();
 

@@ -10,12 +10,11 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use HMRC\Hello\HelloWorldRequest;
 use HMRC\Request\RequestMethod;
-use HMRC\Test\Request\RequestTest;
+use HMRC\Test\Request\RequestTestCase;
 
-class HelloWorldRequestTest extends RequestTest
+class HelloWorldRequestTest extends RequestTestCase
 {
-    /** @test */
-    public function it_calls_correct_endpoint()
+    public function testItCallsCorrectEndpoint()
     {
         // Setup mocked client
         $container = [];

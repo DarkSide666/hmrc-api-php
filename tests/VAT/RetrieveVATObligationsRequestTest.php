@@ -11,13 +11,13 @@ use GuzzleHttp\Psr7\Response;
 use HMRC\Exceptions\InvalidVariableValueException;
 use HMRC\Oauth2\AccessToken as HMRCAccessToken;
 use HMRC\Request\RequestMethod;
-use HMRC\Test\Request\RequestTest;
+use HMRC\Test\Request\RequestTestCase;
 use HMRC\VAT\RetrieveVATObligationsGovTestScenario;
 use HMRC\VAT\RetrieveVATObligationsRequest;
 use HMRC\VAT\RetrieveVATObligationStatus;
 use League\OAuth2\Client\Token\AccessToken;
 
-class RetrieveVATObligationsRequestTest extends RequestTest
+class RetrieveVATObligationsRequestTest extends RequestTestCase
 {
     private $vrn;
 
@@ -34,8 +34,7 @@ class RetrieveVATObligationsRequestTest extends RequestTest
         $this->to = '2019-01-01';
     }
 
-    /** @test */
-    public function it_throws_exception_when_given_wrong_government_test_scenario()
+    public function testItThrowsExceptionWhenGivenWrongGovernmentTestScenario()
     {
         $this->expectException(InvalidVariableValueException::class);
 
@@ -43,8 +42,7 @@ class RetrieveVATObligationsRequestTest extends RequestTest
         $request->setGovTestScenario('WRONG');
     }
 
-    /** @test */
-    public function it_doesnt_throws_exception_when_given_correct_government_test_scenario()
+    public function testItDoesntThrowExceptionWhenGivenCorrectGovernmentTestScenario()
     {
         $request = new RetrieveVATObligationsRequest($this->vrn, $this->from, $this->to);
         $request->setGovTestScenario(RetrieveVATObligationsGovTestScenario::MONTHLY_THREE_MET);
@@ -52,16 +50,14 @@ class RetrieveVATObligationsRequestTest extends RequestTest
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_throws_exception_when_given_wrong_status()
+    public function testItThrowsExceptionWhenGivenWrongStatus()
     {
         $this->expectException(InvalidVariableValueException::class);
 
         new RetrieveVATObligationsRequest($this->vrn, $this->from, $this->to, 'A');
     }
 
-    /** @test */
-    public function it_doesnt_throws_exception_when_given_correct_status()
+    public function testItDoesntThrowExceptionWhenGivenCorrectStatus()
     {
         new RetrieveVATObligationsRequest($this->vrn, $this->from, $this->to, RetrieveVATObligationStatus::OPEN);
         new RetrieveVATObligationsRequest($this->vrn, $this->from, $this->to, RetrieveVATObligationStatus::FULFILLED);
@@ -69,8 +65,7 @@ class RetrieveVATObligationsRequestTest extends RequestTest
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_calls_correct_endpoint()
+    public function testItCallsCorrectEndpoint()
     {
         // Setup access token
         $accessToken = uniqid();

@@ -8,8 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class ResponseTest extends TestCase
 {
-    /** @test */
-    public function it_returns_success_when_response_is_success()
+    public function testItReturnsSuccessWhenResponseIsSuccess()
     {
         $body = [
             'message' => 'example body',
@@ -24,8 +23,7 @@ class ResponseTest extends TestCase
         $this->assertEquals($body, $response->getArray());
     }
 
-    /** @test */
-    public function it_returns_false_when_response_is_failure()
+    public function testItReturnsFalseWhenResponseIsFailure()
     {
         $guzzleResponse = new Response(500, [], '');
         $response = new HMRCResponse($guzzleResponse);

@@ -8,16 +8,14 @@ use PHPUnit\Framework\TestCase;
 
 class DateCheckerTest extends TestCase
 {
-    /** @test */
-    public function it_doesnt_throws_exception_when_given_correct_date_format()
+    public function testItDoesntThrowsExceptionWhenGivenCorrectDateFormat()
     {
         DateChecker::checkDateStringFormat('2020-01-25', 'Y-m-d');
 
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_throws_exception_when_given_wrong_date_format()
+    public function testItThrowsExceptionWhenGivenWrongDateFormat()
     {
         $this->expectException(InvalidDateFormatException::class);
 

@@ -12,13 +12,13 @@ use HMRC\Exceptions\InvalidPostBodyException;
 use HMRC\Exceptions\InvalidVariableValueException;
 use HMRC\Oauth2\AccessToken as HMRCAccessToken;
 use HMRC\Request\RequestMethod;
-use HMRC\Test\Request\RequestTest;
+use HMRC\Test\Request\RequestTestCase;
 use HMRC\VAT\SubmitVATReturnGovTestScenario;
 use HMRC\VAT\SubmitVATReturnPostBody;
 use HMRC\VAT\SubmitVATReturnRequest;
 use League\OAuth2\Client\Token\AccessToken;
 
-class SubmitVATReturnRequestTest extends RequestTest
+class SubmitVATReturnRequestTest extends RequestTestCase
 {
     private $vrn;
 
@@ -29,8 +29,7 @@ class SubmitVATReturnRequestTest extends RequestTest
         $this->vrn = uniqid();
     }
 
-    /** @test */
-    public function it_throws_exception_when_given_wrong_government_test_scenario()
+    public function testItThrowsExceptionWhenGivenWrongGovernmentTestScenario()
     {
         $this->expectException(InvalidVariableValueException::class);
 
@@ -38,8 +37,7 @@ class SubmitVATReturnRequestTest extends RequestTest
         $request->setGovTestScenario('WRONG');
     }
 
-    /** @test */
-    public function it_doesnt_throws_exception_when_given_correct_government_test_scenario()
+    public function testItDoesntThrowExceptionWhenGivenCorrectGovernmentTestScenario()
     {
         $request = new SubmitVATReturnRequest($this->vrn, new SubmitVATReturnPostBody());
         $request->setGovTestScenario(SubmitVATReturnGovTestScenario::INVALID_PERIODKEY);
@@ -47,8 +45,7 @@ class SubmitVATReturnRequestTest extends RequestTest
         $this->addToAssertionCount(1);
     }
 
-    /** @test */
-    public function it_throws_exception_when_has_no_post_body()
+    public function testItThrowsExceptionWhenHasNoPostBody()
     {
         $this->expectException(InvalidPostBodyException::class);
 
@@ -56,8 +53,7 @@ class SubmitVATReturnRequestTest extends RequestTest
         $request->fire();
     }
 
-    /** @test */
-    public function it_calls_correct_endpoint()
+    public function testItCallsCorrectEndpoint()
     {
         // Setup access token
         $accessToken = uniqid();
